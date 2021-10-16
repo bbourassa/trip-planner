@@ -30,8 +30,12 @@ const dir = path.dirname(__dirname);
 app.use(express.static(__dirname + '/dist/trip-planner'));
 
 app.get('/*', function(req,res) {
-    res.sendFile(path.join(__dirname+'/src/app/app.component.html'));
+    //res.sendFile(path.join(__dirname+'/src/app/app.component.html'));
+
+    res.sendFile(path.join(__dirname+'/dist/trip-planner/index.html'));
 });
+
+app.get('/api/test', (req, res) => res.json({ user: 'geek' })); 
 
 // Start the app by listening on the default Heroku port
 const port = process.env.PORT || 8080;

@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'trip-compare', component: TripComparisonComponent},
     { path: 'view', component: ViewTripsComponent},
     { path: 'view-trip', component: OneTripViewComponent},
-    { path: 'view-compare', component: TripComparisonViewComponent}
+    { path: 'view-compare', component: TripComparisonViewComponent},
 ]
 
 @NgModule({
