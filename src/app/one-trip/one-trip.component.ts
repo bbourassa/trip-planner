@@ -21,7 +21,7 @@ export class OneTripComponent implements OnInit {
     console.log(Global.isCreate);
   }
 
-  baseURL = 'http://localhost:8080';
+  baseURL = 'http://trip-to-plan.herokuapp.com';
 
   testGet() {
 
@@ -30,7 +30,7 @@ export class OneTripComponent implements OnInit {
     //console.log(thisData);
     let temp;
 
-    return this.http.get<any[]>(this.baseURL).subscribe((response) => {                           //Next callback
+    return this.http.get<any[]>(this.baseURL + '/api/test').subscribe((response) => {                           //Next callback
         console.log('response received')
         console.log(response);
         temp = response; 
