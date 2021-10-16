@@ -21,7 +21,7 @@ export class OneTripComponent implements OnInit {
     console.log(Global.isCreate);
   }
 
-  baseURL = 'http://trip-to-plan.herokuapp.com';
+  baseURL = 'https://trip-to-plan.herokuapp.com';
 
   testGet() {
 
