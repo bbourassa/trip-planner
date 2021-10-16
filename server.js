@@ -30,7 +30,6 @@ const dir = path.dirname(__dirname);
 app.use(express.static(__dirname + '/dist/trip-planner'));
 
 app.get('/*', function(req,res) {
-    
     res.sendFile(path.join(__dirname+'/src/app/app.component.html'));
 });
 
