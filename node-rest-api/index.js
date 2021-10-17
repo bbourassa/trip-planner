@@ -18,7 +18,7 @@ const password = dbconnection.password;
 //});
 const url = process.env.DATABASE_URL || `postgres://${username}:${password}@ec2-44-199-26-122.compute-1.amazonaws.com:5432/de1jf3mgm707uv?sslmode=require`;
 
-exports.db = pgp(url);
+//exports.db = pgp(url);
 
 const tripRoute = require('./routes/trip.routes');
 
@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'dist/trip-planner')));
 app.use('/api', tripRoute)
 
 app.listen(process.env.PORT || 8000, () => {
-  console.log('Listening on port ' + port)
+//  console.log('Listening on port ' + port)
 })
 
 // 404 Handler
