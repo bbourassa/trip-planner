@@ -6,7 +6,7 @@ let express = require('express'),
   bodyParser = require('body-parser')
 
   //SECRET
-const dbconnection = require('../secrets.json');
+const dbconnection = require('./secrets.json');
 
 const username = dbconnection.username;
 const password = dbconnection.password;
@@ -20,7 +20,7 @@ const url = process.env.DATABASE_URL || `postgres://${username}:${password}@ec2-
 
 //exports.db = pgp(url);
 
-const tripRoute = require('./routes/trip.routes');
+const tripRoute = require('./node-rest-api/routes/trip.routes');
 
 const allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
