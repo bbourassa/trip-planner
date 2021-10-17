@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Global } from '../globals';
+//import { Global } from '../globals';
 
 @Component({
   selector: 'app-main-menu',
@@ -17,17 +17,17 @@ export class MainMenuComponent implements OnInit {
   }
 
   setCreate(name: string): void {
-    Global.isCreate = true;
-    Global.isView = false;
-    this.linkName = name;
-    this.router.navigateByUrl(this.linkName);
+    //Global.isCreate = true;
+    //Global.isView = false;
+    //this.linkName = name;
+    //this.router.navigateByUrl(this.linkName);
   }
 
   setView(name: string): void {
-      Global.isCreate = false;
-      Global.isView = true;
-      this.linkName = name;
-      this.router.navigateByUrl(this.linkName);
+    //  Global.isCreate = false;
+    //  Global.isView = true;
+    //  this.linkName = name;
+    //  this.router.navigateByUrl(this.linkName);
   }
 
 }

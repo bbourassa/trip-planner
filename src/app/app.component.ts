@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Global } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,4 @@ import { Global } from './globals';
 })
 export class AppComponent {
   title = 'trip-planner';
-  isCreate = Global.isCreate;
-  isView = Global.isView;
 }
