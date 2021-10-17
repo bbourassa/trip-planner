@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 
 let express = require('express'),
   path = require('path'),
