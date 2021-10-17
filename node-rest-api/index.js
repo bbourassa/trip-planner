@@ -57,7 +57,7 @@ app.listen(process.env.PORT || 8000, () => {
 
 // Base Route
 app.get('/', (req, res) => {
-  res.send('invaild endpoint');
+    res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
 app.get('/api/trip/:trip', (req, res) => {
