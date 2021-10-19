@@ -12,10 +12,10 @@ export class CreateTripComponent implements OnInit {
   constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
-    this.crudService.GetBooks().subscribe(res => {
-        console.log(res)
-        //this.Books =res;
-      }); 
+    //this.crudService.GetTrips().subscribe(res => {
+    //    console.log(res)
+    //    //this.Books =res;
+    //  }); 
   }
 
   setLink(name: string) {
