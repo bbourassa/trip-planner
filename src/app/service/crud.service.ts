@@ -18,9 +18,9 @@ export class CrudService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all objects
-  GetBooks() {
-    return this.httpClient.get(`${this.REST_API}/create`);
-  }
+//  GetTrips() {
+//    return this.httpClient.get(`${this.REST_API}/trip/mytest`);
+//  }
 
 //  // Get single object
 //  GetBook(id:any): Observable<any> {
