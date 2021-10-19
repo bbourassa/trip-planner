@@ -68,5 +68,4 @@ tripRoute.route('/comparison/:name').delete((req, res) => {
     // for removing a trip comparison
 });
 
-
 module.exports = tripRoute;
