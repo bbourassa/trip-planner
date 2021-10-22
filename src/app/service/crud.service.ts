@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class CrudService {
 
   // Node/Express API
-  REST_API: string = 'http://localhost:8000/api';
+  REST_API: string = 'https://trip-to-plan.herokuapp.com/api';
 
   // Http Header
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -18,9 +18,9 @@ export class CrudService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all objects
-  GetBooks() {
-    return this.httpClient.get(`${this.REST_API}/create`);
-  }
+//  GetTrips() {
+//    return this.httpClient.get(`${this.REST_API}/trip/mytest`);
+//  }
 
 //  // Get single object
 //  GetBook(id:any): Observable<any> {
