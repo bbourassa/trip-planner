@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
 //import { Global } from '../globals';
 
 @Component({
