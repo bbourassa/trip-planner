@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CrudService } from '../service/crud.service';
+import { interval, timer } from 'rxjs';
 
 @Component({
   selector: 'app-one-trip',
@@ -20,6 +22,7 @@ export class OneTripComponent implements OnInit {
       tripLength: '',
       numberOfPeople: 0,
       arrivalTravel: 0,
+      hid: 0,
       departureTravel: 0,
       otherExpenses: 0,
       proList: '',
@@ -33,7 +36,7 @@ export class OneTripComponent implements OnInit {
       hotelPrice: ''
   };
 
-  constructor( private formBuilder: FormBuilder, private router: Router) { 
+  constructor( private formBuilder: FormBuilder, private router: Router, private crudService: CrudService) { 
     this.tripForm = this.formBuilder.group({
         tripName: '',
         tripLocation: '',
@@ -84,7 +87,25 @@ export class OneTripComponent implements OnInit {
   onSubmit(form: any) {
       this.setTripInfo(form);
       this.setHotelInfo(form);
-      this.router.navigate(['/create']);
+      this.crudService.updateHotel(this.hotelInfo.hotelName, this.hotelInfo).subscribe(() => {
+        console.log('data added successfully!');
+    }, (err) => {
+        console.log(err);
+    });
+    timer(1000).subscribe(x => {
+        this.crudService.GetHotelMax().subscribe(res => {
+            let tempId: any = res;
+            this.tripInfo.hid = tempId[0].max;
+          }); 
+    });
+    timer(2000).subscribe(x => {
+        this.crudService.updateTrip(form.name, this.tripInfo).subscribe(() => {
+            console.log('data added successfully!');
+        }, (err) => {
+            console.log(err);
+        });
+    });
+    this.router.navigate(['/create']);
   }
 
 }

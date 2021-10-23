@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'dist/trip-planner')));
 
 
 // API root
-app.use('/api', tripRoute)
+app.use('/api', tripRoute);
 
 app.listen(process.env.PORT || 8000, () => {
 //  console.log('Listening on port ' + port)
