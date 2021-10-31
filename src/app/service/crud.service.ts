@@ -10,6 +10,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class CrudService {
 
   // Node/Express API
+  
   REST_API: string = 'https://trip-to-plan.herokuapp.com/api';
 
   // Http Header
@@ -33,6 +34,16 @@ export class CrudService {
   // Get single object
   GetTrip(id:any): Observable<any> { 
     let API_URL = `${this.REST_API}/trip/${id}`;
+    return this.httpClient.get(API_URL, { headers: this.httpHeaders })
+      .pipe(map((res: any) => {
+          return res || {}
+        }),
+        catchError(this.handleError)
+      )
+  }
+
+  GetSomeTrips(name:any): Observable<any> {
+    let API_URL = `${this.REST_API}/trips/${name}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders })
       .pipe(map((res: any) => {
           return res || {}

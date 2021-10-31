@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../service/crud.service';
 import { interval, timer } from 'rxjs';
@@ -14,12 +14,13 @@ export class OneTripComponent implements OnInit {
 
   tripForm: any; 
 
+  validName!: boolean;
+
   tripInfo = {
       tripName: '',
       tripLocation: '',
       startDate: '',
       endDate: '',
-      tripLength: '',
       numberOfPeople: 0,
       arrivalTravel: 0,
       hid: 0,
@@ -36,13 +37,14 @@ export class OneTripComponent implements OnInit {
       hotelPrice: ''
   };
 
+  allTrips: any;
+
   constructor( private formBuilder: FormBuilder, private router: Router, private crudService: CrudService) { 
     this.tripForm = this.formBuilder.group({
         tripName: '',
         tripLocation: '',
         startDate: '',
         endDate: '',
-        tripLength: 0,
         numberOfPeople: 0,
         hotelName: '',
         hotelRating: 0,
@@ -54,10 +56,13 @@ export class OneTripComponent implements OnInit {
         conList: '',
         addNotes: ''
 
-    })
+    });
   }
 
   ngOnInit(): void {
+    this.crudService.GetTrips().subscribe(res => {
+        this.allTrips = res;
+    });
   }
 
   setTripInfo(form: any) {
@@ -65,7 +70,6 @@ export class OneTripComponent implements OnInit {
     this.tripInfo.tripLocation = form.tripLocation;
     this.tripInfo.startDate = form.startDate;
     this.tripInfo.endDate = form.endDate;
-    this.tripInfo.tripLength = form.tripLength;
     this.tripInfo.numberOfPeople = form.numberOfPeople;
     this.tripInfo.arrivalTravel = form.arrivalTravel;
     this.tripInfo.departureTravel = form.departureTravel;
@@ -73,24 +77,20 @@ export class OneTripComponent implements OnInit {
     this.tripInfo.proList = form.proList;
     this.tripInfo.conList = form.conList;
     this.tripInfo.addNotes = form.addNotes;
-    console.log(this.tripInfo);
   }
 
   setHotelInfo(form: any) {
     this.hotelInfo.hotelName = form.hotelName;
     this.hotelInfo.hotelRating = form.hotelRating;
     this.hotelInfo.hotelPrice = form.hotelPrice;
-    console.log(this.hotelInfo);
   }
 
 
-  onSubmit(form: any) {
+  onSubmit(form: NgForm) {
       this.setTripInfo(form);
       this.setHotelInfo(form);
-      this.crudService.updateHotel(this.hotelInfo.hotelName, this.hotelInfo).subscribe(() => {
-        console.log('data added successfully!');
-    }, (err) => {
-        console.log(err);
+      this.crudService.updateHotel(this.hotelInfo.hotelName, this.hotelInfo).subscribe(res => {
+        alert(res.status);
     });
     timer(1000).subscribe(x => {
         this.crudService.GetHotelMax().subscribe(res => {
@@ -105,7 +105,18 @@ export class OneTripComponent implements OnInit {
             console.log(err);
         });
     });
-    this.router.navigate(['/create']);
+        //this.router.navigate(['/create']);
+  }
+
+  checkName() {
+     let name = (<HTMLInputElement>document.getElementById('tripName')).value; 
+     if (this.allTrips.some((i: { name: string; }) => i.name === name)) {
+        this.validName = true;
+        document.getElementById('tripName')?.classList.add('invalidBorder');
+     } else {
+        this.validName = false;
+        document.getElementById('tripName')?.classList.remove('invalidBorder');
+     } 
   }
 
 }

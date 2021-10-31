@@ -32,14 +32,14 @@
 <div class="container content-box">
     <div class="text-center" role="main">
         <h1 id="createHeader">Create a New Trip</h1>
-        <p>Form Fields in Red and With an Astrick Are Required</p>
+        <p>Form Fields In Red With an Astrick Are Required, Trip Names Must Be Unique</p>
     </div>
 </div>
 
 <form [formGroup]="tripForm" (ngSubmit)="onSubmit(tripForm.value)" class="ml-5 mr-5" onkeydown="return event.key != 'Enter';">
     <div class="form-group">
       <label for="tripName">Trip Name *</label>
-      <input type="text" class="form-control" id="tripName" placeholder="Enter Trip Name" formControlName="tripName" required>
+      <input type="text" class="form-control" id="tripName" placeholder="Enter Trip Name" formControlName="tripName" (keyup)="checkName()" required>
     </div>
     <div class="form-group">
         <label for="tripLocation">Trip Location *</label>
@@ -57,10 +57,6 @@
             <input type="date" class="form-control" id="endDate" formControlName="endDate" required>
         </div>
       </div>
-    </div>
-    <div class="form-group">
-        <label for="tripLength">Length of Stay *</label>
-        <input type="number" class="form-control" id="tripLength" placeholder="Enter Trip Length" formControlName="tripLength" required min="0">
     </div>
     <div class="form-group">
         <label for="numberOfPeople">Number of People *</label>
@@ -117,5 +113,5 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!tripForm.valid">Generate Trip Information</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!tripForm.valid || validName">Generate Trip Information</button>
 </form>

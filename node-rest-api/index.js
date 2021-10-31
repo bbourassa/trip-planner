@@ -120,6 +120,13 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
+if(process.env.NODE_ENV === 'production'){
+    const path  =  require('path');
+    app.get('/*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','dist/trip-planner'))
+    })
+}
+
 // error handler
 app.use(function (err, req, res, next) {
   console.error(err.message);

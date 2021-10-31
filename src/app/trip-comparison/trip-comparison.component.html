@@ -32,7 +32,24 @@
 <div class="container content-box">
     <div class="text-center" role="main">
         <h1 id="createHeader">Create a New Trip Comparison</h1>
-
-        <button routerLink="/create" class="btn btn-primary">Go Back</button>
+        <p>To generate a trip comparison, search and select two trips and hit "Generate Trip Comparison" </p>
     </div>
 </div>
+
+<form [formGroup]="tripComparison" class="ml-5 mr-5" onkeydown="return event.key != 'Enter';">
+    <div class="form-group">
+      <div class="row">
+          <div class="col">
+            <label for="firstTrip">First Trip</label>
+            <input type="text" class="form-control" id="firstTrip" placeholder="Enter the First Trip Name" formControlName="firstTrip" required>       
+          </div>
+          <div class="col">
+            <label for="secondTrip">Second Trip</label>
+            <input type="text" class="form-control" id="secondTrip" placeholder="Enter the Second Trip Name" formControlName="secondTrip" required>       
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary" id="generateTrip" [disabled]="!tripComparison.valid">Generate Trip Comparison</button>
+          </div>
+      </div>
+    </div>
+</form>

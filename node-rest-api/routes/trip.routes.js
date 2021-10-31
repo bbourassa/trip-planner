@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
+
 const express = require('express');
 const app = express();
 
@@ -57,6 +59,11 @@ tripRoute.route('/trip/:name').delete((req, res) => {
     // for removing a trip
 });
 
+tripRoute.route('/trips/:name').get(async (req, res) => {
+    let tripPattern = '%' + req.params.name + '%';
+    res.json(await db.any('SELECT * FROM public."trips" WHERE name LIKE $1;', [tripPattern]));
+});
+
 tripRoute.route('/trip-max').get(async (req, res) => {
     let maxId = await db.any('SELECT MAX(id) FROM public."trips";');
     res.json(maxId);
@@ -71,7 +78,7 @@ tripRoute.route('/hotel/:name').get(async (req, res) => {
     // for getting a single hotel's information
     let hotelId = req.params.name;
     console.log(hotelId);
-    res.json(await db.any('SELECT * FROM public."hotels" WHERE id=$1', [hotelId]));
+    res.json(await db.any('SELECT * FROM public."hotels" WHERE id=$1;', [hotelId]));
 });
 
 tripRoute.route('/hotel/:name').put(async (req, res) => {
