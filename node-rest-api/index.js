@@ -18,7 +18,7 @@ const password = dbconnection.password;
 //});
 const url = process.env.DATABASE_URL || `postgres://${username}:${password}@ec2-44-199-26-122.compute-1.amazonaws.com:5432/de1jf3mgm707uv?sslmode=require`;
 
-//exports.db = pgp(url);
+exports.db = pgp(url);
 
 const tripRoute = require('./node-rest-api/routes/trip.routes');
 
