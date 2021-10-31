@@ -92,18 +92,14 @@ export class OneTripComponent implements OnInit {
       this.crudService.updateHotel(this.hotelInfo.hotelName, this.hotelInfo).subscribe(res => {
         alert(res.status);
     });
-    timer(1000).subscribe(x => {
         this.crudService.GetHotelMax().subscribe(res => {
             let tempId: any = res;
             this.tripInfo.hid = tempId[0].max;
           }); 
-    });
-    timer(2000).subscribe(x => {
         this.crudService.updateTrip(form.name, this.tripInfo).subscribe(() => {
             console.log('data added successfully!');
         }, (err) => {
             console.log(err);
-        });
     });
         //this.router.navigate(['/create']);
   }

@@ -33,17 +33,13 @@ export class CreateTripComponent implements OnInit {
         let tempId: any = res;
         tripId = tempId[0].max;
     });
-    timer(2000).subscribe(x => {
         this.crudService.GetTrip(tripId).subscribe(res => {
             this.testVar = res;
             let tempTrip = this.testVar[0];
             hid = tempTrip.hid;
             this.tripInfo = JSON.stringify(tempTrip);
         });
-    });
-    timer(2500).subscribe(x => {
         this.setHotelInfo(hid);
-    });
     //this.crudService.GetTrips().subscribe(res => {
     //    this.testVar = res;
     //    let tempTrip = this.testVar[0];
