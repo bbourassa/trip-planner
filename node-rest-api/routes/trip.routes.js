@@ -3,6 +3,9 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const express = require('express');
 const app = express();
 
+var pg = require('pg');
+pg.defaults.ssl = true;
+
 const dbconnection = require('../../secrets.json');
 
 const username = dbconnection.username;
