@@ -72,6 +72,7 @@ if(process.env.NODE_ENV === 'production'){
     const path  =  require('path');
     app.use(express.static("client/build"));
     app.get('/*',(req,res)=>{
+        console.log('hit page');
         res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'))
     })
 }
