@@ -60,70 +60,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
-app.get('/api/trip/:trip', (req, res) => {
-    // for getting all trip information
-});
-
-app.get('/api/trip/:name', (req, res) => {
-    // for getting a single trip's information
-});
-
-app.post('/api/trip/:name', (req, res) => {
-    // for creating a new trip
-});
-
-app.delete('/api/trip/:name', (req, res) => {
-    // for removing a trip
-});
-
-app.get('/api/hotel/:name', (req, res) => {
-    // for getting a single hotel's information
-})
-
-app.post('/api/hotel/:name', (req, res) => {
-    // for creating a new hotel
-});
-
-app.get('/api/pro/:name', (req, res) => {
-    // for getting a single pro's information
-});
-
-app.post('/api/pro/:name', (req, res) => {
-    // for creating a new pro
-});
-
-app.get('/api/con/:name', (req, res) => {
-    // for getting a single con's information
-});
-
-app.post('/api/con/:name', (req, res) => {
-    // for creating a new con
-});
-
-app.get('/api/comparison', (req, res) => {
-    // for getting all trip comparisons
-});
-
-app.get('/api/comparison/:name', (req, res) => {
-    // for getting a single trip comparison
-});
-
-app.post('/api/comparison/:name', (req, res) => {
-    // for creating a new trip comparison
-});
-
-app.delete('/api/comparison/:name', (req, res) => {
-    // for removing a trip comparison
-});
-
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/trip-planner'));
+  res.sendFile(path.join(__dirname, 'dist/trip-planner', 'index.html'));
 });
 
 if(process.env.NODE_ENV === 'production'){
     const path  =  require('path');
     app.get('/*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client','build','dist/trip-planner'))
+        res.sendFile(path.resolve(__dirname,'client','build','dist/trip-planner', 'index.html'))
     })
 }
 
