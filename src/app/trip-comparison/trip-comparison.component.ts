@@ -60,7 +60,7 @@ export class TripComparisonComponent implements OnInit {
 
   checkName(inputName: string) {
     let name = (<HTMLInputElement>document.getElementById(inputName)).value; 
-    if(inputName === 'firstTrip' || inputName === 'secondName') {
+    if(inputName === 'firstTrip' || inputName === 'secondTrip') {
         if (this.allTrips.some((i: { name: string; }) => i.name === name)) {
            this.validName = false;
            document.getElementById(inputName)?.classList.remove('invalidBorder');
