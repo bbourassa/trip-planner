@@ -64,6 +64,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
+app.get('/main-menu', (req, res) => {
+    res.send('you made it!');
+})
+
 // error handler
 app.use(function (err, req, res, next) {
   console.error(err.message);
