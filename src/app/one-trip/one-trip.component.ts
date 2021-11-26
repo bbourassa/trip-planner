@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../service/crud.service';
 import { interval, timer } from 'rxjs';
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import { CreateTripComponent } from '../create-trip/create-trip.component';
 
 @Component({
   selector: 'app-one-trip',
@@ -28,10 +30,7 @@ export class OneTripComponent implements OnInit {
       otherExpenses: 0,
       proList: '',
       conList: '',
-      addNotes: ''
-  };
-
-  hotelInfo = {
+      addNotes: '',
       hotelName: '',
       hotelRating: '',
       hotelPrice: ''
@@ -39,7 +38,7 @@ export class OneTripComponent implements OnInit {
 
   allTrips: any;
 
-  constructor( private formBuilder: FormBuilder, private router: Router, private crudService: CrudService) { 
+  constructor( private formBuilder: FormBuilder, private router: Router, private crudService: CrudService, private dialog: MatDialog) { 
     this.tripForm = this.formBuilder.group({
         tripName: '',
         tripLocation: '',
@@ -80,32 +79,21 @@ export class OneTripComponent implements OnInit {
   }
 
   setHotelInfo(form: any) {
-    this.hotelInfo.hotelName = form.hotelName;
-    this.hotelInfo.hotelRating = form.hotelRating;
-    this.hotelInfo.hotelPrice = form.hotelPrice;
+    this.tripInfo.hotelName = form.hotelName;
+    this.tripInfo.hotelRating = form.hotelRating;
+    this.tripInfo.hotelPrice = form.hotelPrice;
   }
-
 
   onSubmit(form: NgForm) {
       this.setTripInfo(form);
       this.setHotelInfo(form);
-      this.crudService.updateHotel(this.hotelInfo.hotelName, this.hotelInfo).subscribe(res => {
-        alert(res.status);
+      this.crudService.updateTrip(this.tripInfo.tripName, this.tripInfo).subscribe(res => {
+        this.openDialog(res[0]);
     });
-    timer(1000).subscribe(x => {
-        this.crudService.GetHotelMax().subscribe(res => {
-            let tempId: any = res;
-            this.tripInfo.hid = tempId[0].max;
-          }); 
+    this.crudService.GetTrips().subscribe(res => {
+        this.allTrips = res;
+
     });
-    timer(2000).subscribe(x => {
-        this.crudService.updateTrip(form.name, this.tripInfo).subscribe(() => {
-            console.log('data added successfully!');
-        }, (err) => {
-            console.log(err);
-        });
-    });
-        //this.router.navigate(['/create']);
   }
 
   checkName() {
@@ -117,6 +105,21 @@ export class OneTripComponent implements OnInit {
         this.validName = false;
         document.getElementById('tripName')?.classList.remove('invalidBorder');
      } 
+  }
+
+  openDialog(trip: any) {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CreateTripComponent, {
+        data: {
+            trip
+        },
+        maxHeight: '100vh'
+    });
   }
 
 }

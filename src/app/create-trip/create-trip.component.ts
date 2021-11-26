@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CrudService } from '../service/crud.service';
 import { interval, timer } from 'rxjs';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-trip',
@@ -10,80 +11,47 @@ import { interval, timer } from 'rxjs';
 
 export class CreateTripComponent implements OnInit {
 
-  tripInfo!: String;
-  hotelInfo!: String;
-  testVar: any;
-  tripName!: String;
-  tripLocation!: String;
-  tripTotalPrice!: any;
-  tripPricePerson!: any;
-  hotelName!: String;
-  hotelRating!: any;
-  hotelPrice!: any;
-  arrivalTravel!: any;
-  departureTravel!: any;
+  tripInfo: any;
+  startDate!: String;
+  endDate!: String;
+  lengthOfStay!: number;
+  costPerPerson!: number;
+  hotel!: String;
+  rating!: number;
+  hotelPrice!: number;
+
+  options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 
-  constructor(private crudService: CrudService) { }
+  constructor(private crudService: CrudService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    let tripId = 0;
-    let hid = 0;
-    this.crudService.GetTripMax().subscribe(res => {
-        let tempId: any = res;
-        tripId = tempId[0].max;
-    });
-        this.crudService.GetTrip(tripId).subscribe(res => {
-            this.testVar = res;
-            let tempTrip = this.testVar[0];
-            hid = tempTrip.hid;
-            this.tripInfo = JSON.stringify(tempTrip);
-        });
-        this.setHotelInfo(hid);
-    //this.crudService.GetTrips().subscribe(res => {
-    //    this.testVar = res;
-    //    let tempTrip = this.testVar[0];
-    //    this.tripInfo = JSON.stringify(res);
-    //    this.tripName = tempTrip.name;
-    //    this.tripLocation = tempTrip.location;
-    //    let prices = {
-    //       people: tempTrip.people,
-    //       arrival: tempTrip.arrivaltravel,
-    //       departure: tempTrip.departuretravel,
-    //       expenses: tempTrip.expenses,
-    //    }
-    //    this.totalPrice(prices);
-    //    this.tripPricePerson = this.tripTotalPrice / prices.people;
-    //    this.setHotelInformation();
-    //    this.setTravelInformation(tempTrip.arrivaltravel, tempTrip.departuretravel);
-    //  }); 
-  }
-
-  setHotelInfo(hotelId: number) {
+    this.tripInfo = this.data.trip;
+    let hotelId = this.tripInfo.hid;
     this.crudService.GetHotel(hotelId).subscribe(res => {
-        let holdInfo = res;
-        console.log(holdInfo);
-        this.hotelInfo = JSON.stringify(holdInfo[0]);
+        this.setHotelInfo(res);
+        this.calculateTotalCost();
     });
+      this.formatDates();
   }
 
-  totalPrice(prices: any) {
-    let totalArrival = prices.people * prices.arrival;
-    let totalDeparture = prices.people * prices.departure;
-    let totalExpenses = prices.people * prices.expenses;
-    let totalHotel = prices.people * 10;
-    this.tripTotalPrice = totalArrival + totalDeparture + totalExpenses + totalHotel;
+  formatDates() {
+    let tempStart = new Date(this.tripInfo.startdate);
+    let tempEnd = new Date(this.tripInfo.enddate);
+    this.startDate = tempStart.toDateString();
+    this.endDate = tempEnd.toDateString();
+    let timeDif = tempEnd.getTime() - tempStart.getTime();
+    this.lengthOfStay = timeDif / (1000 * 3600 * 24);
   }
 
-  setHotelInformation() {
-      this.hotelName = 'Example Hotel';
-      this.hotelRating = 4.5;
-      this.hotelPrice = 100;
+  calculateTotalCost() {
+      this.costPerPerson = this.tripInfo.arrivaltravel + this.tripInfo.departuretravel + this.tripInfo.expenses + this.hotelPrice;
   }
 
-  setTravelInformation(arrival: any, departure: any) {
-    this.arrivalTravel = arrival;
-    this.departureTravel = departure;
+  setHotelInfo(hotel: any) {
+      this.hotel = hotel[0].hotel;
+      this.rating = hotel[0].rating;
+      this.hotelPrice = hotel[0].price;
   }
 
 }

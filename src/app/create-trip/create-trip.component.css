@@ -12,4 +12,9 @@
 
 #createHeader {
     margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.labels {
+    font-weight: bold;
 }

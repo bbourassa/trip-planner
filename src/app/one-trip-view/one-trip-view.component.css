@@ -1,7 +1,11 @@
 .content-box {
-    margin-top: 250px;
+    margin-top: 50px;
 }
 
 #viewHeader {
     margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
 }

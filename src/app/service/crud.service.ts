@@ -12,6 +12,7 @@ export class CrudService {
   // Node/Express API
   
   REST_API: string = 'https://trip-to-plan.herokuapp.com/api';
+//  REST_API: string = 'http://localhost:8000/api';
 
   // Http Header
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
@@ -21,14 +22,6 @@ export class CrudService {
 //   Get all objects
   GetTrips() {
     return this.httpClient.get(`${this.REST_API}/trip`);
-  }
-  
-  GetTripMax() {
-      return this.httpClient.get(`${this.REST_API}/trip-max`)
-  }
-
-  GetHotelMax() {
-    return this.httpClient.get(`${this.REST_API}/hotel-max`); 
   }
 
   // Get single object
@@ -62,33 +55,45 @@ export class CrudService {
       )
   }
 
+  GetComparisons() {
+    return this.httpClient.get(`${this.REST_API}/comparison`);
+  }
+
+  GetSomeComparisons(id:any): Observable<any> {
+      let API_URL = `${this.REST_API}/comparisons/${id}`;
+      return this.httpClient.get(API_URL, { headers: this.httpHeaders })
+      .pipe(map((res: any) => {
+          return res || {}
+        }),
+        catchError(this.handleError)
+      )
+
+  }
+
   // Update
   updateTrip(id:any, data:any): Observable<any> {
     let API_URL = `${this.REST_API}/trip/${id}`;
-    console.log(data);
     return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
       .pipe(
         catchError(this.handleError)
       )
+  }
+
+  updateComparison(id:any, data: any): Observable<any> {
+      console.log('hit');
+      let API_URL = `${this.REST_API}/comparisons/${id}`;
+      return this.httpClient.put(API_URL, data, { headers: this.httpHeaders}).pipe(
+          catchError(this.handleError)
+      );
   }
 
   updateHotel(id:any, data:any): Observable<any> {
     let API_URL = `${this.REST_API}/hotel/${id}`;
-    console.log(data);
     return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
       .pipe(
         catchError(this.handleError)
       )
   }
-
-//  // Delete
-//  deleteBook(id:any): Observable<any> {
-//    let API_URL = `${this.REST_API}/delete-book/${id}`;
-//    return this.httpClient.delete(API_URL, { headers: this.httpHeaders}).pipe(
-//        catchError(this.handleError)
-//      )
-//  }
-
 
   // Error 
   handleError(error: HttpErrorResponse) {

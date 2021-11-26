@@ -1,0 +1,147 @@
+<div class="container content-box">
+    <div class="text-center" role="main">
+        <h1 id="createHeader">Trip Comparison Information: {{comparisonInfo.compname}}</h1>
+    </div>
+</div>
+
+<hr> 
+
+<div class="container content-box">
+    <div class="text-center" role="main">
+        <div class="row">
+            <div class="col">
+                <h3><span class="labels">Location of {{tripOneInfo.name}}:</span> {{tripOneInfo.location}}</h3>
+                <h3><span class="labels">Location of {{tripTwoInfo.name}}:</span> {{tripTwoInfo.location}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Number of People for {{tripOneInfo.name}}:</span> {{tripOneInfo.people}}</h3>
+                <h3><span class="labels">Number of People for {{tripTwoInfo.name}}:</span> {{tripTwoInfo.people}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Total Cost Per Person:</span> </h3>
+                <ngx-charts-bar-vertical
+                    [view]="[500, 400]"
+                    [results]="totalCost"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Trip'"
+                    [yAxisLabel]="'Total Cost Per Person ($)'">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Dates of Trip:</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3><span class="labels">Start Date of {{tripOneInfo.name}}:</span> {{startDateOne}} <span class="labels"> End Date of {{tripOneInfo.name}}:</span> {{endDateOne}}</h3>
+                <h3><span class="labels">Start Date of {{tripTwoInfo.name}}:</span> {{startDateTwo}} <span class="labels"> End Date of {{tripTwoInfo.name}}:</span> {{endDateTwo}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Length of Stay for {{tripOneInfo.name}}:</span> {{lengthOfStayOne}}</h3>
+                <h3><span class="labels">Length of Stay for {{tripTwoInfo.name}}:</span> {{lengthOfStayTwo}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Hotel/Airbnb Information:</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3><span class="labels">Hotel/Airbnb for {{tripOneInfo.name}}:</span> {{hotelOneInfo.hotel}}</h3>
+                <h3><span class="labels">Hotel/Airbnb for {{tripTwoInfo.name}}:</span> {{hotelTwoInfo.hotel}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Hotel/Airbnb Rating for {{tripOneInfo.name}}:</span> {{hotelOneInfo.rating}}</h3>
+                <h3><span class="labels">Hotel/Airbnb Rating for {{tripTwoInfo.name}}:</span> {{hotelTwoInfo.rating}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Hotel/Airbnb Pricing Per Person:</span> </h3>
+                <ngx-charts-bar-vertical
+                    [view]="[500, 400]"
+                    [results]="totalHotelCost"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Hotel'"
+                    [yAxisLabel]="'Price for Hotel Per Person ($)'">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Travel Information:</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3><span class="labels">Pricing for Travel to Destination - Per Person:</span> </h3>
+                <ngx-charts-bar-vertical
+                    [view]="[500, 400]"
+                    [results]="totalArrivalCost"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Trip'"
+                    [yAxisLabel]="'Price for Travel to Destination Per Person ($)'">
+                </ngx-charts-bar-vertical>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Pricing for Travel Home from Destination - Per Person:</span> </h3>
+                <ngx-charts-bar-vertical
+                    [view]="[500, 400]"
+                    [results]="totalDepartureCost"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Trip'"
+                    [yAxisLabel]="'Price for Travel Home Per Person($)'">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Additional Information</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3><span class="labels">Additional Expenses - Per Person:</span> </h3>
+                <ngx-charts-bar-vertical
+                    [view]="[500, 400]"
+                    [results]="totalExpenses"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="'Trip'"
+                    [yAxisLabel]="'Price of All Other Expenses Per Person ($)'">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3><span class="labels">Pros for {{tripOneInfo.name}}:</span> {{tripOneInfo.pros}}</h3>
+                <h3><span class="labels">Pros for {{tripTwoInfo.name}}:</span> {{tripTwoInfo.pros}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Cons for {{tripOneInfo.name}}:</span> {{tripOneInfo.cons}}</h3>
+                <h3><span class="labels">Cons for {{tripTwoInfo.name}}:</span> {{tripOneInfo.cons}}</h3>
+            </div>
+            <div class="col">
+                <h3><span class="labels">Additional Info for {{tripOneInfo.name}}:</span> {{tripOneInfo.notes}}</h3>
+                <h3><span class="labels">Additional Info for {{tripTwoInfo.name}}:</span> {{tripOneInfo.notes}}</h3>
+            </div>
+        </div>
+    </div>
+</div>

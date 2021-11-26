@@ -32,23 +32,28 @@
 <div class="container content-box">
     <div class="text-center" role="main">
         <h1 id="createHeader">Create a New Trip Comparison</h1>
-        <p>To generate a trip comparison, search and select two trips and hit "Generate Trip Comparison" </p>
+        <p>To generate a trip comparison, provide a comparison name and two trips. Comparison names must be unique and non-unique names will be indicated by a red border. Additionally, trips must be pre-created. Invalid trip names will be indicated by a red border. </p>
     </div>
 </div>
 
-<form [formGroup]="tripComparison" class="ml-5 mr-5" onkeydown="return event.key != 'Enter';">
+<form [formGroup]="tripComparison" (ngSubmit)="onSubmit(tripComparison.value); tripComparison.reset()" class="ml-5 mr-5" onkeydown="return event.key != 'Enter';">
     <div class="form-group">
       <div class="row">
           <div class="col">
+            <label for="compName">Trip Comparison Name</label>
+            <input type="text" class="form-control" id="compName" placeholder="Enter a Trip Comparison Name" formControlName="compName" (keyup)="checkName('compName')" required>       
+          </div>
+          <div class="col">
             <label for="firstTrip">First Trip</label>
-            <input type="text" class="form-control" id="firstTrip" placeholder="Enter the First Trip Name" formControlName="firstTrip" required>       
+            <input type="text" class="form-control" id="firstTrip" placeholder="Enter the First Trip Name" formControlName="firstTrip" (keyup)="checkName('firstTrip')" required>       
           </div>
           <div class="col">
             <label for="secondTrip">Second Trip</label>
-            <input type="text" class="form-control" id="secondTrip" placeholder="Enter the Second Trip Name" formControlName="secondTrip" required>       
+            <input type="text" class="form-control" id="secondTrip" placeholder="Enter the Second Trip Name" formControlName="secondTrip" (keyup)="checkName('secondTrip')" required>       
           </div>
           <div class="col">
-            <button type="submit" class="btn btn-primary" id="generateTrip" [disabled]="!tripComparison.valid">Generate Trip Comparison</button>
+            <p *ngIf="validName">Check your inputs - you have an invalid comparison name or trip name.</p>
+            <button type="submit" class="btn btn-primary" id="generateTrip" [disabled]="!tripComparison.valid || validName">Generate Trip Comparison</button>
           </div>
       </div>
     </div>
