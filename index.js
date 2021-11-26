@@ -64,25 +64,25 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
-//app.get('/main-menu', (req, res) => {
-//    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
-//});
+app.get('/main-menu', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
+});
 
-//app.get('/trip-create', (req, res) => {
-//    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
-//});
+app.get('/trip-create', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
+});
 
-//app.get('/trip-compare', (req, res) => {
-//    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
-//});
+app.get('/trip-compare', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
+});
 
-//app.get('/view-trip', (req, res) => {
-//    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
-//});
+app.get('/view-trip', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
+});
 
-//app.get('/view-compare', (req, res) => {
-//    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
-//});
+app.get('/view-compare', (req, res) => {
+    res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'));
+});
 
 //if(process.env.NODE_ENV === 'production'){
 //    const path  =  require('path');
