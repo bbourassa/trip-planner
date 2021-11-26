@@ -88,6 +88,7 @@ tripRoute.route('/comparisons/:name').put(async (req, res) => {
     let secondTrip = req.body.secondTrip;
     db.none('INSERT INTO public."tripcomparisons" (compname, firsttripname, secondtripname) VALUES ($1, $2, $3);', [comparisonName, firstTrip, secondTrip]);
     res.status(201);
+    console.log(await db.any('SELECT * FROM public."tripcomparisons" WHERE compname=$1', [comparisonName]));
     res.json(await db.any('SELECT * FROM public."tripcomparisons" WHERE compname=$1', [comparisonName]));
 });
 

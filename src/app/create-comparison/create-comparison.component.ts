@@ -50,6 +50,7 @@ export class CreateComparisonComponent implements OnInit {
   constructor(private crudService: CrudService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    console.log(this.data);
     this.comparisonInfo = this.data.comparison;
     let firstTripName = this.comparisonInfo.firsttripname;
     let secondTripName = this.comparisonInfo.secondtripname;
