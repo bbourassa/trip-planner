@@ -88,6 +88,7 @@ export class OneTripComponent implements OnInit {
       this.setTripInfo(form);
       this.setHotelInfo(form);
       this.crudService.updateTrip(this.tripInfo.tripName, this.tripInfo).subscribe(res => {
+        console.log(res[0]);
         this.openDialog(res[0]);
     });
     this.crudService.GetTrips().subscribe(res => {
