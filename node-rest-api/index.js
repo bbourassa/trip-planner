@@ -60,6 +60,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
+app.get('/main-menu', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/trip-planner'));
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/trip-planner', 'index.html'));
 });
