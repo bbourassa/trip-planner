@@ -56,6 +56,7 @@ tripRoute.route('/trip/:name').put( async (req, res) => {
     let notes = req.body.addNotes;
     db.none('INSERT INTO public."trips"(location, startdate, enddate, people, hid, arrivaltravel, departuretravel, expenses, notes, pros, cons, name) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);', [location, startDate, endDate, people, hid, arrival, departure, expenses, notes, pros, cons, tripName]);
     res.status(201);
+    console.log(await db.any('SELECT * FROM public."trips" WHERE name=$1', [tripName]));
     res.json(await db.any('SELECT * FROM public."trips" WHERE name=$1', [tripName]));
 });
 
