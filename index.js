@@ -64,9 +64,14 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/trip-planner'));
 });
 
-app.get('/main-menu', (req, res) => {
-    res.send('you made it!');
-})
+if(process.env.NODE_ENV === 'production'){
+    const path  =  require('path');
+    app.use(express.static("client/build"));
+    app.get('/*',(req,res)=>{
+        console.log('hit page');
+        res.sendFile(path.resolve(__dirname,'dist/trip-planner/index.html'))
+    })
+}
 
 // error handler
 app.use(function (err, req, res, next) {
