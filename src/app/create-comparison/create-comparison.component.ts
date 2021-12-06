@@ -1,8 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CrudService } from '../service/crud.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-create-comparison',
@@ -50,7 +48,7 @@ export class CreateComparisonComponent implements OnInit {
   constructor(private crudService: CrudService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    console.log(this.data.comparison);
     this.comparisonInfo = this.data.comparison;
     let firstTripName = this.comparisonInfo.firsttripname;
     let secondTripName = this.comparisonInfo.secondtripname;
@@ -60,7 +58,6 @@ export class CreateComparisonComponent implements OnInit {
             this.hotelOneInfo = res[0];
         });
         this.formatDates(this.tripOneInfo.startdate, this.tripOneInfo.enddate, 1);
-        console.log(this.totalCost);
     });
     this.crudService.GetTrip(secondTripName).subscribe(res => {
         this.tripTwoInfo = res[0];
@@ -72,7 +69,6 @@ export class CreateComparisonComponent implements OnInit {
             this.calculateOtherExpenses();
         });
         this.formatDates(this.tripTwoInfo.startdate, this.tripTwoInfo.enddate, 2);
-        console.log(this.tripTwoInfo);
     });
   }
 
@@ -146,7 +142,9 @@ export class CreateComparisonComponent implements OnInit {
 
   formatDates(startDate: any, endDate: any, tripNum: number) {
     let tempStart = new Date(startDate);
+    tempStart.setDate(tempStart.getDate() + 1);
     let tempEnd = new Date(endDate);
+    tempEnd.setDate(tempEnd.getDate() + 1);
     if(tripNum === 1) {
         this.startDateOne = tempStart.toDateString();
         this.endDateOne = tempEnd.toDateString();

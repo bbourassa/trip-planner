@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { CrudService } from '../service/crud.service';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { CreateComparisonComponent } from '../create-comparison/create-comparison.component';
@@ -51,9 +51,7 @@ export class TripComparisonComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.setComparisonInfo(form);
-    console.log(this.comparisonInfo);
     this.crudService.updateComparison(this.comparisonInfo.compName, this.comparisonInfo).subscribe(res => {
-        console.log(res[0]);
         this.openDialog(res[0]);
     });
   }

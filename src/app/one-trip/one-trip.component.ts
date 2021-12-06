@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../service/crud.service';
-import { interval, timer } from 'rxjs';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import { CreateTripComponent } from '../create-trip/create-trip.component';
 
@@ -38,7 +37,7 @@ export class OneTripComponent implements OnInit {
 
   allTrips: any;
 
-  constructor( private formBuilder: FormBuilder, private router: Router, private crudService: CrudService, private dialog: MatDialog) { 
+  constructor( private formBuilder: FormBuilder, private crudService: CrudService, private dialog: MatDialog) { 
     this.tripForm = this.formBuilder.group({
         tripName: '',
         tripLocation: '',
@@ -88,7 +87,6 @@ export class OneTripComponent implements OnInit {
       this.setTripInfo(form);
       this.setHotelInfo(form);
       this.crudService.updateTrip(this.tripInfo.tripName, this.tripInfo).subscribe(res => {
-        console.log(res[0]);
         this.openDialog(res[0]);
     });
     this.crudService.GetTrips().subscribe(res => {

@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CrudService } from '../service/crud.service';
-import { interval, timer } from 'rxjs';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -26,8 +25,8 @@ export class CreateTripComponent implements OnInit {
   constructor(private crudService: CrudService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.tripInfo = this.data.trip;
+    console.log(this.data);
     let hotelId = this.tripInfo.hid;
     this.crudService.GetHotel(hotelId).subscribe(res => {
         this.setHotelInfo(res);

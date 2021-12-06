@@ -34,9 +34,7 @@ tripRoute.route('/trip/:name').get(async (req, res) => {
 });
 
 tripRoute.route('/trip/:name').put( async (req, res) => {
-    //console.log(req.body);
     let lastHotelId = await db.any('SELECT MAX(id) FROM public."hotels";');
-    //console.log(lastId);
     let newHotelId = lastHotelId[0].max + 1;
     let hotelName = req.body.hotelName;
     let rating = req.body.hotelRating;
@@ -56,7 +54,7 @@ tripRoute.route('/trip/:name').put( async (req, res) => {
     let notes = req.body.addNotes;
     db.none('INSERT INTO public."trips"(location, startdate, enddate, people, hid, arrivaltravel, departuretravel, expenses, notes, pros, cons, name) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);', [location, startDate, endDate, people, hid, arrival, departure, expenses, notes, pros, cons, tripName]);
     res.status(201);
-    console.log(await db.any('SELECT * FROM public."trips" WHERE name=$1', [tripName]));
+    await db.any('SELECT * FROM public."trips" WHERE name=$1', [tripName]);
     res.json(await db.any('SELECT * FROM public."trips" WHERE name=$1', [tripName]));
 });
 
@@ -83,13 +81,12 @@ tripRoute.route('/comparisons/:name').get(async (req, res) => {
 
 tripRoute.route('/comparisons/:name').put(async (req, res) => {
     // for creating a new trip comparison
-    console.log('hits');
     let comparisonName = req.params.name;
     let firstTrip = req.body.firstTrip;
     let secondTrip = req.body.secondTrip;
     db.none('INSERT INTO public."tripcomparisons" (compname, firsttripname, secondtripname) VALUES ($1, $2, $3);', [comparisonName, firstTrip, secondTrip]);
     res.status(201);
-    console.log(await db.any('SELECT * FROM public."tripcomparisons" WHERE compname=$1', [comparisonName]));
+    await db.any('SELECT * FROM public."tripcomparisons" WHERE compname=$1', [comparisonName]);
     res.json(await db.any('SELECT * FROM public."tripcomparisons" WHERE compname=$1', [comparisonName]));
 });
 

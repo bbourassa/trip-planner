@@ -2,9 +2,9 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CrudService } from '../service/crud.service';
 import { MatPaginator } from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import { FormBuilder, NgForm } from '@angular/forms';
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import { MatTableDataSource } from '@angular/material/table';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { CreateTripComponent } from '../create-trip/create-trip.component';
 
 @Component({
@@ -38,16 +38,10 @@ export class OneTripViewComponent implements OnInit {
     });
   }
 
-  getTrip(tripRow: any) {
-      console.log(tripRow.name);
-  }
-
   onSubmit(form: any) {
-    //console.log(form.compname);
     this.crudService.GetSomeTrips(form.tripname).subscribe(res => {
         this.allTrips = res;
         this.dataSource = this.allTrips;
-        console.log(this.allTrips);
     });
   }
 

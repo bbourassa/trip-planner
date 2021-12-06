@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
-//import { Global } from '../globals';
 
 @Component({
   selector: 'app-main-menu',
@@ -15,20 +13,6 @@ export class MainMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  setCreate(name: string): void {
-    //Global.isCreate = true;
-    //Global.isView = false;
-    //this.linkName = name;
-    //this.router.navigateByUrl(this.linkName);
-  }
-
-  setView(name: string): void {
-    //  Global.isCreate = false;
-    //  Global.isView = true;
-    //  this.linkName = name;
-    //  this.router.navigateByUrl(this.linkName);
   }
 
 }

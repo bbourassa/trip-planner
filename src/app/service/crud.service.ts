@@ -80,19 +80,10 @@ export class CrudService {
   }
 
   updateComparison(id:any, data: any): Observable<any> {
-      console.log('hit');
       let API_URL = `${this.REST_API}/comparisons/${id}`;
       return this.httpClient.put(API_URL, data, { headers: this.httpHeaders}).pipe(
           catchError(this.handleError)
       );
-  }
-
-  updateHotel(id:any, data:any): Observable<any> {
-    let API_URL = `${this.REST_API}/hotel/${id}`;
-    return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
-      .pipe(
-        catchError(this.handleError)
-      )
   }
 
   // Error 
@@ -105,7 +96,6 @@ export class CrudService {
       // Handle server error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
     return throwError(errorMessage);
   }
 
