@@ -71,7 +71,11 @@ To get rid of the popup with the trip comparison information, a user can click o
 
 ### 1.3 "View Generated Trips" Page
 
+On the View Generated Trips page, users can view a table of past generated trips. The table is searchable by looking for a keyword in the search field. There is a clear button to clear the search as well. Each of the table rows with the trips is clickable and on selection, will display the associated trip information. 
+
 ### 1.4 "View Generated Trip Comparisons" Page
+
+On the View Generated Trip Comparisons page, users can view a table of past generated trip comparisons. The table is searchable by looking for a keyword in the search field. There is a clear button to clear the search as well. Each of the table rows with the trip comparisons is clickable and on selection, will display the associated trip comparison information. 
 
 ## 2. Structure & Functionality
 
