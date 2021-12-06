@@ -8,6 +8,14 @@ Users can create individual trips that can later be use to generate the comparis
 
 ## 1. User Guide
 
+TripPlanner's homepage provides a main menu for the user to initially decide what they would like to do. There are two dropdowns with two possible options each. They are:
+- Create A Trip/Trip Comparison:
+   - Create A New Trip
+   - Create A New Trip Comparison
+- View Available Trips/Trip Comparisons:
+   - View Generated Trips
+   - View Generated Trip Comparisons
+
 ### 1.1 Creating An Individual Trip
 
 ### 1.2 Creating A Trip Comparison
