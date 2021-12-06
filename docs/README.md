@@ -2,10 +2,10 @@
 
 *Link to application: https://trip-to-plan.herokuapp.com/*
 
-## TripPlanner - User Guide
+## 1. User Guide
 
-## TripPlanner - Structure & Functionality
+## 2. Structure & Functionality
 
-## TripPlanner - API Guide
+## 3. API Guide
 
-## TripPlanner - Database Structure 
+## 4. Database Structure 
