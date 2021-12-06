@@ -1,7 +1,11 @@
-# TripPlanner - User Guide
+# TripPlanner
 
-# TripPlanner - Structure & Functionality
 
-# TripPlanner - API Guide
 
-# TripPlanner - Database Structure 
+## TripPlanner - User Guide
+
+## TripPlanner - Structure & Functionality
+
+## TripPlanner - API Guide
+
+## TripPlanner - Database Structure 
