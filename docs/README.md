@@ -91,31 +91,31 @@ The front-end uses angular to break up the code into components. Each component 
 - trip-comparison
 - trip-comparison-view
 
-##### create-comparison
+#### create-comparison
 
 This component contains the code for the dialog box that gives an individual comparison's information.
 
-##### create-trip
+#### create-trip
 
 This component contains the code for the dialog box that gives an individual trip's information.
 
-##### main-menu
+#### main-menu
 
 This component contains the main homepage code with the menu for page navigation.
 
-##### one-trip
+#### one-trip
 
 This component contains the code for the UI of the trip form and the functions associated with the front-end of trip submission and activating displaying the trip information. 
 
-##### one-trip-view
+#### one-trip-view
 
 This component contains the code for the UI of the previously generated trips table. It also contains the functions associated with the front-end portion of getting all available trips and activating the displaying of trip information on row selection.
 
-##### trip-comparison
+#### trip-comparison
 
 This component contains the code for the UI of the trip comparison form, utilizes the one-trip-view component, and the functions associated with the front-end of trip comparison submission and activating displaying the trip comparison information.
 
-##### trip-comparison-view
+#### trip-comparison-view
 
 This component contains the code for the UI of the previously generated trip comparisons table. It also contains the functions associated with the front-end portion of getting all available trip comparisons and activating the displaying of trip comparison information on row selection.
 
