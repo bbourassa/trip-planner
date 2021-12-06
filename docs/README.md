@@ -50,6 +50,25 @@ To get rid of the popup, a user can click on the faded out background to get bac
 
 ### 1.2 "Create A New Trip Comparison" Page
 
+The "Create A New Trip Comparison" page is where trip comparisons can be made. On this page, you add in the name for two trips that have been previously generated as well as a comparison name and can generate the comparison.
+
+Additionally, on the page is a table of previously generated trips. This table can be searched by inserting a keyword into the search field and searching for certain trips. The purpose of having the previously generated trips on this page is to make it easier for the user to locate the trip names needed for their comparison. The rows in the table are clickable and will display the trip information on selection as well for user reference. 
+
+The following information for a trip comparison is required:
+- Comparison Name
+- First Trip Name
+- Second Trip Name
+
+Required fields are indicated with an asterisk and a red border. Additionally, the comparison name inputed must be unique and the trip names inputed must exist in the previous trips. The red border will also indicate if there is a duplicate name input or a trip name input that doesn't exist. This is also indicated by a message above the generate trip comparison button.
+
+The button will remain deactivated until the fields are filled out with valid information and then the user can submit the trip comparison.
+
+On submission, the trip comparison information is visible to the user. The trip location, number of people, hotel dates, length of stay, hotel names, hotel ratings, pros, cons, and additional notes are directly compared with side-by-side text.
+
+The trip pricing for total cost, hotel cost, travel to destination, travel home, and other expenses are all compared using bar graphs. 
+
+To get rid of the popup with the trip comparison information, a user can click on the faded out background to get back to the trip comparison page. From there, new trip comparisons can be submitted. 
+
 ### 1.3 "View Generated Trips" Page
 
 ### 1.4 "View Generated Trip Comparisons" Page
