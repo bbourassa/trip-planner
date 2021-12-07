@@ -58,7 +58,7 @@ export class OneTripComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.crudService.GetTrips().subscribe(res => {
+    this.crudService.getTrips().subscribe(res => {
         this.allTrips = res;
     });
   }
@@ -86,10 +86,10 @@ export class OneTripComponent implements OnInit {
   onSubmit(form: NgForm) {
       this.setTripInfo(form);
       this.setHotelInfo(form);
-      this.crudService.updateTrip(this.tripInfo.tripName, this.tripInfo).subscribe(res => {
+      this.crudService.createTrip(this.tripInfo.tripName, this.tripInfo).subscribe(res => {
         this.openDialog(res[0]);
     });
-    this.crudService.GetTrips().subscribe(res => {
+    this.crudService.getTrips().subscribe(res => {
         this.allTrips = res;
 
     });

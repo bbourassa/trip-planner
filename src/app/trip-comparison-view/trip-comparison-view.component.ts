@@ -33,7 +33,7 @@ export class TripComparisonViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.crudService.GetComparisons().subscribe(res => {
+    this.crudService.getComparisons().subscribe(res => {
         this.allComparisons = res;
         this.dataSource = new MatTableDataSource<Comparison>(this.allComparisons);
         this.dataSource.paginator = this.paginator;
@@ -42,7 +42,7 @@ export class TripComparisonViewComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    this.crudService.GetSomeComparisons(form.compname).subscribe(res => {
+    this.crudService.getSomeComparisons(form.compname).subscribe(res => {
         this.allComparisons = res;
         this.dataSource = new MatTableDataSource<any>(this.allComparisons);
         this.dataSource = [...this.allComparisons];
@@ -53,7 +53,7 @@ export class TripComparisonViewComponent implements OnInit {
   }
 
   clearSearch() {
-    this.crudService.GetComparisons().subscribe(res => {
+    this.crudService.getComparisons().subscribe(res => {
         this.allComparisons = res;
         this.dataSource = new MatTableDataSource<Comparison>(this.allComparisons);
         this.dataSource.paginator = this.paginator;

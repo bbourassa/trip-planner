@@ -31,7 +31,7 @@ export class OneTripViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.crudService.GetTrips().subscribe(res => {
+    this.crudService.getTrips().subscribe(res => {
         this.allTrips = res;
         this.dataSource = new MatTableDataSource<Trip>(this.allTrips);
         this.dataSource.paginator = this.paginator;
@@ -39,14 +39,14 @@ export class OneTripViewComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    this.crudService.GetSomeTrips(form.tripname).subscribe(res => {
+    this.crudService.getSomeTrips(form.tripname).subscribe(res => {
         this.allTrips = res;
         this.dataSource = this.allTrips;
     });
   }
 
   clearSearch() {
-    this.crudService.GetTrips().subscribe(res => {
+    this.crudService.getTrips().subscribe(res => {
         this.allTrips = res;
         this.dataSource = new MatTableDataSource<Trip>(this.allTrips);
         this.dataSource.paginator = this.paginator;

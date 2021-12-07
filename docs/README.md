@@ -121,6 +121,40 @@ This component contains the code for the UI of the previously generated trip com
 
 ### 2.2 The CRUD Service:
 
+The service component is used to connect the front-end to the back-end and identifies the API calls. The API calls themselves are defined in section 3. Mainly all of the front-end components utilize the CRUD service that is created. For the purpose of this application, there is no updating or deleting that occurs. 
+
+##### getTrips()
+
+getTrips() connects up the API call to get all of the available trips in the database. If successful, it will return a response with all the trips in the database and their information to the front-end.
+
+##### getSomeTrips()
+
+getSomeTrips() connects up the API call to get the trips that are being searched for. The searched for name is passed in as a parameter for the API call. If successful, it will return a response with all trips that contain that name in the trip name and their information to the front-end.
+
+##### getHotel()
+
+getHotel() connects up the API call to get the hotel that is being searched for. The searched for name is passed in as a parameter for the API call. If successful, it will return a response with the hotel's information to the front-end.
+
+##### getComparisons()
+
+getComparisons() connects up the API call to get all of the available trip comparisons in the database. If successful, it will return a response with all the trip comparisons in the database and their information to the front-end.
+
+##### getSomeComparisons()
+
+getSomeComparisons() connects up the API call to get the trip comparisons that are being searched for. The searched for name is passed in as a parameter for the API call. If successful, it will return a response with all trip comparisons that contain that name in the comparison name and their information to the front-end.
+
+##### createTrip()
+
+createTrip() connects up the API call to create a trip in the database. It takes in the name and data parameters from the front-end and creates a new trip and its associated hotel in the database. It then will return a response with the new trip's information to the front-end. 
+
+##### createComparison()
+
+createComparison() connects up the API call to create a trip in the database. It takes in the name and data parameters from the front-end and creates a new trip comparison in the database. It then will return a response with the new trip comparison's information to the front-end. 
+
+##### handleError()
+
+handleError() will handle if any errors occur both on client and server errors.
+
 ### 2.3 Structure of Back-End: Server File
 
 ### 2.4 Structure of the Back-End: Routing And Database Calls

@@ -28,7 +28,7 @@ export class CreateTripComponent implements OnInit {
     this.tripInfo = this.data.trip;
     console.log(this.data);
     let hotelId = this.tripInfo.hid;
-    this.crudService.GetHotel(hotelId).subscribe(res => {
+    this.crudService.getHotel(hotelId).subscribe(res => {
         this.setHotelInfo(res);
         this.calculateTotalCost();
     });

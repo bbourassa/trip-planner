@@ -35,10 +35,10 @@ export class TripComparisonComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.crudService.GetTrips().subscribe(res => {
+    this.crudService.getTrips().subscribe(res => {
         this.allTrips = res;
     });
-    this.crudService.GetComparisons().subscribe(res => {
+    this.crudService.getComparisons().subscribe(res => {
         this.allComparisons = res;
     });
   }
@@ -51,7 +51,7 @@ export class TripComparisonComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.setComparisonInfo(form);
-    this.crudService.updateComparison(this.comparisonInfo.compName, this.comparisonInfo).subscribe(res => {
+    this.crudService.createComparison(this.comparisonInfo.compName, this.comparisonInfo).subscribe(res => {
         this.openDialog(res[0]);
     });
   }

@@ -54,14 +54,14 @@ export class CreateComparisonComponent implements OnInit {
     let secondTripName = this.comparisonInfo.secondtripname;
     this.crudService.GetTrip(firstTripName).subscribe(res => {
         this.tripOneInfo = res[0];
-        this.crudService.GetHotel(this.tripOneInfo.hid).subscribe(res => {
+        this.crudService.getHotel(this.tripOneInfo.hid).subscribe(res => {
             this.hotelOneInfo = res[0];
         });
         this.formatDates(this.tripOneInfo.startdate, this.tripOneInfo.enddate, 1);
     });
     this.crudService.GetTrip(secondTripName).subscribe(res => {
         this.tripTwoInfo = res[0];
-        this.crudService.GetHotel(this.tripTwoInfo.hid).subscribe(res => {
+        this.crudService.getHotel(this.tripTwoInfo.hid).subscribe(res => {
             this.hotelTwoInfo = res[0];
             this.calculateTotalCost();
             this.calculateHotelPrices();

@@ -19,23 +19,12 @@ export class CrudService {
 
   constructor(private httpClient: HttpClient) { }
 
-//   Get all objects
-  GetTrips() {
+//  Read
+  getTrips() {
     return this.httpClient.get(`${this.REST_API}/trip`);
   }
 
-  // Get single object
-  GetTrip(id:any): Observable<any> { 
-    let API_URL = `${this.REST_API}/trip/${id}`;
-    return this.httpClient.get(API_URL, { headers: this.httpHeaders })
-      .pipe(map((res: any) => {
-          return res || {}
-        }),
-        catchError(this.handleError)
-      )
-  }
-
-  GetSomeTrips(name:any): Observable<any> {
+  getSomeTrips(name:any): Observable<any> {
     let API_URL = `${this.REST_API}/trips/${name}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders })
       .pipe(map((res: any) => {
@@ -45,8 +34,8 @@ export class CrudService {
       )
   }
 
-  GetHotel(id:any): Observable<any> { 
-    let API_URL = `${this.REST_API}/hotel/${id}`;
+  getHotel(name:any): Observable<any> { 
+    let API_URL = `${this.REST_API}/hotel/${name}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders })
       .pipe(map((res: any) => {
           return res || {}
@@ -55,12 +44,12 @@ export class CrudService {
       )
   }
 
-  GetComparisons() {
+  getComparisons() {
     return this.httpClient.get(`${this.REST_API}/comparison`);
   }
 
-  GetSomeComparisons(id:any): Observable<any> {
-      let API_URL = `${this.REST_API}/comparisons/${id}`;
+  getSomeComparisons(name:any): Observable<any> {
+      let API_URL = `${this.REST_API}/comparisons/${name}`;
       return this.httpClient.get(API_URL, { headers: this.httpHeaders })
       .pipe(map((res: any) => {
           return res || {}
@@ -70,17 +59,17 @@ export class CrudService {
 
   }
 
-  // Update
-  updateTrip(id:any, data:any): Observable<any> {
-    let API_URL = `${this.REST_API}/trip/${id}`;
+  // Create
+  createTrip(name:any, data:any): Observable<any> {
+    let API_URL = `${this.REST_API}/trip/${name}`;
     return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
       .pipe(
         catchError(this.handleError)
       )
   }
 
-  updateComparison(id:any, data: any): Observable<any> {
-      let API_URL = `${this.REST_API}/comparisons/${id}`;
+  createComparison(name:any, data: any): Observable<any> {
+      let API_URL = `${this.REST_API}/comparisons/${name}`;
       return this.httpClient.put(API_URL, data, { headers: this.httpHeaders}).pipe(
           catchError(this.handleError)
       );
