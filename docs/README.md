@@ -203,4 +203,6 @@ To set up routing the API calls and the use of the database calls with angular, 
 
 ## 3. API Structure 
 
+<ins>GET</ins>
+
 ## 4. Database Structure 
