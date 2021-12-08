@@ -203,20 +203,20 @@ To set up routing the API calls and the use of the database calls with angular, 
 
 ## 3. API Structure 
 
-<strong><ins>GET /api/trip</ins></strong>
+<strong><em>GET /api/trip</em></strong>
 
-<strong><ins>GET /api/trips/:name</ins></strong>
+<strong><em>GET /api/trips/:name</em></strong>
 
-<strong><ins>GET /api/trip/:name</ins></strong>
+<strong><em>GET /api/trip/:name</em></strong>
 
-<strong><ins>PUT /api/trip/:name</ins></strong>
+<strong><em>PUT /api/trip/:name</em></strong>
 
-<strong><ins>GET /api/hotel/:id</ins></strong>
+<strong><em>GET /api/hotel/:id</em></strong>
 
-<strong><ins>GET /api/comparison</ins></strong>
+<strong><em>GET /api/comparison</em></strong>
 
-<strong><ins>GET /api/comparisons/:name</ins></strong>
+<strong><em>GET /api/comparisons/:name</em></strong>
 
-<strong><ins>PUT /api/comparisons/:name</ins></strong>
+<strong><em>PUT /api/comparisons/:name</em></strong>
 
 ## 4. Database Structure 
