@@ -220,21 +220,21 @@ To set up routing the API calls and the use of the database calls with angular, 
 - Retrieves new trip data 
 - Accept: application/json
 - Content-Type: application/json<br />
-{
-    tripName: string,
-    tripLocation: string,
-    startDate: string,
-    endDate: string,
-    numberOfPeople: number,
-    arrivalTravel: number,
-    departureTravel: number,
-    otherExpenses: number,
-    proList: string,
-    conList: string,
-    addNotes: string,
-    hotelName: string,
-    hotelRating: number,
-    hotelPrice: number
+{<br />
+    tripName: string,<br />
+    tripLocation: string,<br />
+    startDate: string,<br />
+    endDate: string,<br />
+    numberOfPeople: number,<br />
+    arrivalTravel: number,<br />
+    departureTravel: number,<br />
+    otherExpenses: number,<br />
+    proList: string,<br />
+    conList: string,<br />
+    addNotes: string,<br />
+    hotelName: string,<br />
+    hotelRating: number,<br />
+    hotelPrice: number<br />
 }
 
 <strong><em>GET /api/hotel/{id}</em></strong>
@@ -253,11 +253,11 @@ To set up routing the API calls and the use of the database calls with angular, 
 - Sends data for a new trip comparison to be created
 - Retrieves new trip comparison data 
 - Accept: application/json
-- Content-Type: application/json
-{
-    name: string,
-    firstTrip: number,
-    secondTrip: number
+- Content-Type: application/json<br />
+{<br />
+    name: string,<br />
+    firstTrip: number,<br />
+    secondTrip: number<br />
 }
 
 ## 4. Database Structure 
