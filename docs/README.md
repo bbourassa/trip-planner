@@ -219,7 +219,7 @@ To set up routing the API calls and the use of the database calls with angular, 
 - Sends data for a new hotel and trip to be created
 - Retrieves new trip data 
 - Accept: application/json
-- Content-Type: application/json
+- Content-Type: application/json<br />
 {
     tripName: string,
     tripLocation: string,
