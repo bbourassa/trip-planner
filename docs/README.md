@@ -254,10 +254,11 @@ To set up routing the API calls and the use of the database calls with angular, 
 - Retrieves new trip comparison data 
 - Accept: application/json
 - Content-Type: application/json<br />
-{<br />
-    name: string,<br />
-    firstTrip: number,<br />
-    secondTrip: number<br />
+<pre>{
+    name: string,
+    firstTrip: number,
+    secondTrip: number
 }
+</pre>
 
 ## 4. Database Structure 
