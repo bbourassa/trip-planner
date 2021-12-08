@@ -203,6 +203,20 @@ To set up routing the API calls and the use of the database calls with angular, 
 
 ## 3. API Structure 
 
-<ins>GET</ins>
+<bold><ins>GET https://trip-to-plan.herokuapp.com/api/trip</ins></bold>
+
+<bold><ins>GET https://trip-to-plan.herokuapp.com/api/trips/:name</ins></bold>
+
+<bold><ins>GET https://trip-to-plan.herokuapp.com/api/trip/:name</ins></bold>
+
+<bold><ins>PUT https://trip-to-plan.herokuapp.com/api/trip/:name</ins></bold>
+
+<bold><ins>GET https://trip-to-plan.herokuapp.com/api/hotel/:id</ins></bold>
+
+<bold><ins>GET https://trip-to-plan.herokuapp.com/api/comparison</ins></bold>
+
+<bold><ins>GET https://trip-to-plan.herokuapp.com/api/comparisons/:name</ins></bold>
+
+<bold><ins>PUT https://trip-to-plan.herokuapp.com/api/comparisons/:name</ins></bold>
 
 ## 4. Database Structure 
