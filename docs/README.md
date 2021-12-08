@@ -131,6 +131,10 @@ getTrips() connects up the API call to get all of the available trips in the dat
 
 getSomeTrips() connects up the API call to get the trips that are being searched for. The searched for name is passed in as a parameter for the API call. If successful, it will return a response with all trips that contain that name in the trip name and their information to the front-end.
 
+##### getTrip()
+
+getSomeTrips() connects up the API call to get the trip that is being searched for. The searched for name is passed in as a parameter for the API call. If successful, it will return a response with the trip that contains that name as the trip name and its information to the front-end.
+
 ##### getHotel()
 
 getHotel() connects up the API call to get the hotel that is being searched for. The searched for name is passed in as a parameter for the API call. If successful, it will return a response with the hotel's information to the front-end.
@@ -157,7 +161,45 @@ handleError() will handle if any errors occur both on client and server errors.
 
 ### 2.3 Structure of Back-End: Server File
 
+The server file, index.js, utilizes express to set up the server. The file is used at runtime by heroku to host the application and by setting the port. It also handles the routing of the pages by assuring that the main-menu page is loaded on initial load of the webpage and assures that from any page, the page can be refreshed without losing the connection. 
+
 ### 2.4 Structure of the Back-End: Routing And Database Calls
+
+To set up routing the API calls and the use of the database calls with angular, a trip.routes.js file was created. This file makes the database connection and also utilizes express.Router() to set up the API routes to be called. Their mapping in relation to the CRUD service file which helps to connect up these routes and how they relate to working with the database are explained as follows (API calls themselves are explained formally in section 3):
+
+- GET /trip
+  - Used in relation to the getTrips() method in the CRUD service
+  - Runs a query on the database to get back all trips from the database in alphabetical order
+
+- GET /trips/:name
+  - Used in relation to the getSomeTrips() method in the CRUD service
+  - Runs a query on the database to get back all trips that contain the passed in name in their trip name in alphabetical order
+
+- GET /trip/:name
+  - Used in relation to the getTrip() method in the CRUD service
+  - Runs a query on the database to get back a singular trip matching the requested trip name
+
+- PUT /trip/:name
+  - Used in relation to the createTrip() method in the CRUD service
+  - Runs a query on the database to first, add the new hotel to the database and then use the hotel's id number to add the trip information into the database
+  - It then runs a query to get back the new trip from the database
+
+- GET /hotel/:id
+  - Used in relation to the getHotel() method in the CRUD service
+  - Runs a query on the database to get back a singular hotel matching the requested hotel id
+
+- GET /comparison
+  - Used in relation to the getComparison() method in the CRUD service
+  - Runs a query on the database to get back all comparisons from the database in alphabetical order
+
+- GET /comparisons/:name
+  - Used in relation to the getSomeComparisons() method in the CRUD service
+  - Runs a query on the database to get back all comparisons that contain the passed in name in their comparison name in alphabetical order
+
+- PUT /comparisons/:name
+  - Used in relation to the createComparison() method in the CRUD service
+  - Runs a query on the database to first, add the new comparison to the database
+  - It then runs a query to get back the new trip from the database
 
 ## 3. API Structure 
 

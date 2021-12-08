@@ -24,6 +24,17 @@ export class CrudService {
     return this.httpClient.get(`${this.REST_API}/trip`);
   }
 
+  // Get single object
+  getTrip(name:any): Observable<any> { 
+    let API_URL = `${this.REST_API}/trip/${name}`;
+    return this.httpClient.get(API_URL, { headers: this.httpHeaders })
+      .pipe(map((res: any) => {
+          return res || {}
+        }),
+        catchError(this.handleError)
+      )
+  }
+
   getSomeTrips(name:any): Observable<any> {
     let API_URL = `${this.REST_API}/trips/${name}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders })
@@ -34,8 +45,8 @@ export class CrudService {
       )
   }
 
-  getHotel(name:any): Observable<any> { 
-    let API_URL = `${this.REST_API}/hotel/${name}`;
+  getHotel(id:any): Observable<any> { 
+    let API_URL = `${this.REST_API}/hotel/${id}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders })
       .pipe(map((res: any) => {
           return res || {}

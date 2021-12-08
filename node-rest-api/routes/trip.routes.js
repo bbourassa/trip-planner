@@ -27,6 +27,11 @@ tripRoute.route('/trip').get(async(req, res) => {
     res.json(await db.any('SELECT * FROM public."trips" ORDER BY "name" ASC;'));
 });
 
+tripRoute.route('/trips/:name').get(async (req, res) => {
+    let tripPattern = '%' + req.params.name + '%';
+    res.json(await db.any('SELECT * FROM public."trips" WHERE name LIKE $1 ORDER BY name ASC;', [tripPattern]));
+});
+
 tripRoute.route('/trip/:name').get(async (req, res) => {
     // for getting a single trip's information
     let tripName = req.params.name;
@@ -58,14 +63,9 @@ tripRoute.route('/trip/:name').put( async (req, res) => {
     res.json(await db.any('SELECT * FROM public."trips" WHERE name=$1', [tripName]));
 });
 
-tripRoute.route('/trips/:name').get(async (req, res) => {
-    let tripPattern = '%' + req.params.name + '%';
-    res.json(await db.any('SELECT * FROM public."trips" WHERE name LIKE $1 ORDER BY name ASC;', [tripPattern]));
-});
-
-tripRoute.route('/hotel/:name').get(async (req, res) => {
+tripRoute.route('/hotel/:id').get(async (req, res) => {
     // for getting a single hotel's information
-    let hotelId = req.params.name;
+    let hotelId = req.params.id;
     res.json(await db.any('SELECT * FROM public."hotels" WHERE id=$1;', [hotelId]));
 });
 
