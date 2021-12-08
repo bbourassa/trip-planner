@@ -204,19 +204,43 @@ To set up routing the API calls and the use of the database calls with angular, 
 ## 3. API Structure 
 
 <strong><em>GET /api/trip</em></strong>
+- Retrieves all trip data
+- Accept: application/json
 
-<strong><em>GET /api/trips/:name</em></strong>
+<strong><em>GET /api/trips/{name}</em></strong>
+- Retrieves trip data for trips with trip names containing the name looked for
+- Accept: application/json
 
-<strong><em>GET /api/trip/:name</em></strong>
+<strong><em>GET /api/trip/{name}</em></strong>
+- Retrieves trip data for a specific trip with the trip name matching the name looked for
+- Accept: application/json
 
-<strong><em>PUT /api/trip/:name</em></strong>
+<strong><em>PUT /api/trip/{name}</em></strong>
+- Sends data for a new hotel and trip to be created
+- Content-Type: application/json
+{
+    tripName: string,
+    tripLocation: string,
+    startDate: string,
+    endDate: string,
+    numberOfPeople: number,
+    arrivalTravel: number,
+    departureTravel: number,
+    otherExpenses: number,
+    proList: string,
+    conList: string,
+    addNotes: string,
+    hotelName: string,
+    hotelRating: number,
+    hotelPrice: number
+}
 
-<strong><em>GET /api/hotel/:id</em></strong>
+<strong><em>GET /api/hotel/{id}</em></strong>
 
 <strong><em>GET /api/comparison</em></strong>
 
-<strong><em>GET /api/comparisons/:name</em></strong>
+<strong><em>GET /api/comparisons/{name}</em></strong>
 
-<strong><em>PUT /api/comparisons/:name</em></strong>
+<strong><em>PUT /api/comparisons/{name}</em></strong>
 
 ## 4. Database Structure 
