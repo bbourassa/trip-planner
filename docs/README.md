@@ -219,23 +219,24 @@ To set up routing the API calls and the use of the database calls with angular, 
 - Sends data for a new hotel and trip to be created
 - Retrieves new trip data 
 - Accept: application/json
-- Content-Type: application/json<br />
-{<br />
-    tripName: string,<br />
-    tripLocation: string,<br />
-    startDate: string,<br />
-    endDate: string,<br />
-    numberOfPeople: number,<br />
-    arrivalTravel: number,<br />
-    departureTravel: number,<br />
-    otherExpenses: number,<br />
-    proList: string,<br />
-    conList: string,<br />
-    addNotes: string,<br />
-    hotelName: string,<br />
-    hotelRating: number,<br />
-    hotelPrice: number<br />
+- Content-Type: application/json
+<pre>{
+    tripName: string,
+    tripLocation: string,
+    startDate: string,
+    endDate: string,
+    numberOfPeople: number,
+    arrivalTravel: number,
+    departureTravel: number,
+    otherExpenses: number,
+    proList: string,
+    conList: string,
+    addNotes: string,
+    hotelName: string,
+    hotelRating: number,
+    hotelPrice: number
 }
+</pre>
 
 <strong><em>GET /api/hotel/{id}</em></strong>
 - Retrieves hotel data for a specific hotel with the hotel id matching the id looked for
