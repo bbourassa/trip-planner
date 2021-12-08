@@ -263,3 +263,17 @@ To set up routing the API calls and the use of the database calls with angular, 
 </pre>
 
 ## 4. Database Structure 
+
+The database contains three tables:
+- trips
+- comparisons
+- hotels
+
+Their structure and relation to the other tables are as follows:
+
+- Trips(<ins>name</ins>, location, people, arrivaltravel, departuretravel, startdate, enddate, pros, cons, notes, expenses, hid)
+    - CREATE TABLE Trips (name varchar primary key, location varchar, people int, arrivaltravel float, departuretravel float, stardate date, enddate date, pros text, cons text, notes text, expenses float, hid int, foreign key hid references Hotels(id));
+- Hotels(<ins>id</ins>, hotel, price, rating)
+    - CREATE TABLE Hotels (id int primary key, hotel varchar, price float, rating float);
+- Comparisons(<ins>compname</ins>, firsttripname, secondtripname)
+    - CREATE TABLE Comparisons (compname varchar primary key, firsttripname varchar, secondtripname varchar, foreign key firsttripname references trips(name), foreign key secondtripname references trips(name));
