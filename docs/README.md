@@ -217,6 +217,8 @@ To set up routing the API calls and the use of the database calls with angular, 
 
 <strong><em>PUT /api/trip/{name}</em></strong>
 - Sends data for a new hotel and trip to be created
+- Retrieves new trip data 
+- Accept: application/json
 - Content-Type: application/json
 {
     tripName: string,
@@ -236,11 +238,26 @@ To set up routing the API calls and the use of the database calls with angular, 
 }
 
 <strong><em>GET /api/hotel/{id}</em></strong>
+- Retrieves hotel data for a specific hotel with the hotel id matching the id looked for
+- Accept: application/json
 
 <strong><em>GET /api/comparison</em></strong>
+- Retrieves all trip comparison data
+- Accept: application/json
 
 <strong><em>GET /api/comparisons/{name}</em></strong>
+- Retrieves trip comparison data for trip comparisons with comparison names containing the name looked for
+- Accept: application/json
 
 <strong><em>PUT /api/comparisons/{name}</em></strong>
+- Sends data for a new trip comparison to be created
+- Retrieves new trip comparison data 
+- Accept: application/json
+- Content-Type: application/json
+{
+    name: string,
+    firstTrip: number,
+    secondTrip: number
+}
 
 ## 4. Database Structure 
